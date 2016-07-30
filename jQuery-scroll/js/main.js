@@ -23,9 +23,6 @@ var Scroll = {};
 				wheelStep: 15       // 滚动步幅
 			};
 			$.extend(true,self.options,options || {});
-			// 检查参数
-            if (self.options.contSelector == null || self.options.barSelector == null ||
-				self.options.tabItemSelector == null || self.anchorSelector == null) { return -1;}
 			// Dom选择函数
 			self._initDomEvent();
 			// 绑定滑块点击拖动事件
