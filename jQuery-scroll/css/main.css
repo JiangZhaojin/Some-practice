@@ -20,6 +20,9 @@ time, mark, audio, video {
     vertical-align:baseline;
     background:transparent;
 }
+ul {
+    list-style: none;
+}
 
 body{
     background-color: #ccc;
@@ -39,6 +42,7 @@ body{
     border-bottom: 1px solid #e5e5e5;
     color: #666;
     background: #f8f8f8;
+    cursor: pointer;
 }
 
 .scroll-tab .tab-item {
