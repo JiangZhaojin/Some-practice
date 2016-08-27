@@ -8,7 +8,7 @@ window.onload = function () {
             var els = document.getElementsByTagName('*');
             for (var i = 0, len = els.length; i < len; i++) {
 
-                if (els[i].className.indexOf(cls + ' ') >=0 || els[i].className.indexOf(' ' + cls + ' ') >=0 || els[i].className.indexOf(' ' + cls) >=0) {
+                if (('/\b'+cls+'\b/').test(els[i].className) {
                     ret.push(els[i]);
                 }
             }
