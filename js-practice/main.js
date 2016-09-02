@@ -102,3 +102,17 @@ Object.prototype.clone = function(){
     return bytes;
 }
 alert(GetBytes("你好,as"));
+
+// 去空格
+function trim(str){
+    return str.replace(/^\s+|\s+$/g, '');
+}
+
+// 遍历数组，对每个元素调用函数
+function each(arr, fn){
+	for(var i in arr){
+		fn(arr[i], i);
+	}
+}
+
+// 
