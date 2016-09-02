@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三列布局</title>
+	<!-- css实现三栏布局，中间自适应 -->
+
+	<style type='text/css'>
+	.left , .right{
+	            height: 300px;
+	            width: 200px;
+	        }
+	        .right{
+	            float: right;
+	            background-color: red;
+	        }
+	        .left{
+	            float: left;
+	            background-color: #080808;
+	        }
+	        .middle{
+ 	            height: 300px;
+	       	    margin: 0 200px; 
+	            background-color: blue;
+	        }
+	</style>
+</head>
+<body>
+	<div class="left"></div>
+    <div class="right"></div>
+	<div class="middle"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>剧中浮动2</title>
+	<style type="text/css">
+	    .align-center{
+	        /**
+	         * 负边距+定位：水平垂直居中（Negative Margin）
+	         * 使用绝对定位将content的定点定位到body的中心，然后使用负margin（content宽高的一半），
+	         * 将content的中心拉回到body的中心，已到达水平垂直居中的效果。
+	         */
+	        position:absolute;
+	        left:50%;
+	        top:50%;
+	        width:400px;
+	        height:400px;
+	        margin-top:-200px;
+	        margin-left:-200px;
+	        border:1px dashed #333;
+	        background-color: yellow;
+	    }
+	</style>
+</head>
+<body>
+	<div class="align-center">哈哈哈哈剧中啦</div>
+</body>
+</html>
