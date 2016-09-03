@@ -103,11 +103,6 @@ Object.prototype.clone = function(){
 }
 alert(GetBytes("你好,as"));
 
-// 去空格
-function trim(str){
-    return str.replace(/^\s+|\s+$/g, '');
-}
-
 // 遍历数组，对每个元素调用函数
 function each(arr, fn){
 	for(var i in arr){
@@ -115,4 +110,70 @@ function each(arr, fn){
 	}
 }
 
-// 
+// 正则表达式练习
+
+// 去空格
+function trim(str){
+    return str.replace(/^\s+|\s+$/g, '');
+}
+
+// 判断是否邮箱
+function isEmail(emailStr) {
+	var pattern = /^(\w+\.)*\w+@\w+(\.\w+)+$/;
+	return pattern.test(emailStr);
+}
+
+// 判断是否手机号
+function isMobilePhoneNum(num){
+	var pattern = /^(\+\d{1,4})?\d{7,11}$/;
+	pattern.test(num);
+}
+
+// 判断是否URL
+function isUrl(url){
+
+}
+
+// -----------------------------------------//
+// 增加样式
+function addClass(element, className){
+	var oldClassName = element.className;
+	element.className = oldClassName == "" ? className : oldClassName+" "+className;
+}
+
+// 移除样式
+function removeClass(element, className){
+	var oldClassName = element.className;
+	element.className = oldClassName.replace(className, "");
+}
+
+// 同一级元素判断
+function isSiblingNode(element1, element2){
+	return element1.parentNode === element2.parentNode;
+}
+
+//  获取
+
+//------------------事件---------------//
+// 事件处理
+var EventUtil = {
+	addEvent: function(element, event, listener){
+    	if (element.addEventListener) {
+            element.addEventListener(event, listener);
+    	} else if(element.attachEvent) {
+            element.attachEvent('on' + event, listener);
+    	} else {
+    		element['on' + event] = listener;
+    	}		
+	}
+	removeEvent: function(element, event, listener){
+		if (element.removeEventListener) {
+			element.removeEventListener(event, listener);
+		} else if(element.detachEvent) {
+            element.detachEvent(event, listener);
+		} else {
+			element.['on' + event] = null;
+		}
+	}
+}
+
