@@ -154,9 +154,25 @@ function isSiblingNode(element1, element2){
 
 //  获取
 
-//------------------事件---------------//
+//---------------通用的事件处理---------------//
 // 事件处理
 var EventUtil = {
+
+	// 当文档加载成功
+	readyEvent: function(fn){
+		if (typeof fn != 'function') { return false;}
+		var onloaded = window.onload;
+		if (typeof onloaded != 'function') {
+			window.onload = fn;
+		} else {
+			window.onload = function(){
+				onloaded();
+				fn();
+			}
+		}
+	},
+
+	// 添加事件
 	addEvent: function(element, event, listener){
     	if (element.addEventListener) {
             element.addEventListener(event, listener);
@@ -165,7 +181,9 @@ var EventUtil = {
     	} else {
     		element['on' + event] = listener;
     	}		
-	}
+	}，
+
+	// 去除事件
 	removeEvent: function(element, event, listener){
 		if (element.removeEventListener) {
 			element.removeEventListener(event, listener);
@@ -174,6 +192,96 @@ var EventUtil = {
 		} else {
 			element.['on' + event] = null;
 		}
+	}，
+
+	// 阻止冒泡
+	stopPropagation: function(event){
+		if (event.stopPropagation) {
+			event.stopPropagation();
+		} else {
+			event.cancelBubble = true;
+		}
+	},
+
+	// 阻止默认事件
+	preventDefault: function(event){
+		if (event.preventDefault) {
+			event.preventDefault();
+		} else {
+			event.returnValue = false;
+		}
+	},
+
+	// 获取目标
+	getTarget: function(event){
+        return event.target || event.srcElement;
+	},
+
+	// 获取事件对象
+	getEvent: function(event){
+		return event || window.event;
 	}
 }
 
+// 设置cookie
+function setCookie(cookieName, cookieValue, expiredays){
+	var cookie = cookieName + '=' + encodeURIComponent(cookieValue);
+	if (typeof expiredays == 'number') {
+		cookie += ';max-age=' + (expiredays*24*60*60);
+	}
+	document.cookie = cookie;
+}
+
+// 获取cookie
+function getCookie(cookieName){
+	var cookie = {};
+	var all = document.cookie;
+	var list = all.split(";");
+	for (var i = 0; i < list.length; i++) {
+		var pos = list[i].indexOf('=');
+		var name = list[i].substr(0, pos);
+		var value = list[i].substr(pos+1);
+		cookie[name] = decodeURIComponent(value);
+	}
+	return cookie;
+}
+
+//----------- ajax -------------------//
+function ajax(url, options){
+
+	var dataResult;
+
+	// chuli data
+	if (typeof options.data === 'object') {
+		var str=' ';
+		for (var c in options.data) {
+			str = str + c + '=' + options.data[c] + '&';
+		}
+		dataResult = str.slice();
+	}
+
+    options.type = options.type || 'GET';
+
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
+
+    xhr.open(options.type, url);
+    if (options.type === 'GET') {
+    	xhr.send(null);
+    } else {
+    	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    	xhr.send(dataResult);
+    }
+
+    xhr.onreadystatechange = function(){
+    	if (xhr.readyState === 4 && xhr.status === 200) {
+    		if (options.onsuccess) {
+    			options.onsuccess(xhr.responseText, xhr.responseXML);
+    		}
+    	} else {
+    		if (options.onfail) {
+    			options.onfail();
+    		}
+    	}
+    };
+
+}
