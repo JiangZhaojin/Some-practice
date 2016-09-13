@@ -285,3 +285,45 @@ function ajax(url, options){
     };
 
 }
+
+// 判断一个字符出现最多的次数，并统计次数
+function countSameChars(str){
+	var charNum = {};
+	var maxChar = -1;
+	var letter;
+	for (var i = 0; i < str.length; i ++) {
+		if (charNum[str[i]]) {
+			charNum[str[i]]++;
+			if (charNum[str[i]] > maxChar) {
+				maxChar = charNum[str[i]];
+				letter = str[i];
+			}
+		} else {
+			charNum[str[i]] = 1;
+			if (charNum[str[i]] > maxChar) {
+				maxChar = charNum[str[i]];
+				letter = str[i];
+			}
+		}
+	}
+}
+
+// 经典闭包
+// 点击dom alert相应编号
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+  <a href='#'> 第一个链接 </a> </br>
+  <a href='#'> 第二个链接 </a> </br>
+  <a href='#'> 第三个链接 </a> </br>
+  <a href='#'> 第四个链接 </a> </br>
+  <script type="text/javascript">
+    var lis = document.links;
+    for(var i = 0, length = lis.length; i < length; i++) {
+        (function(i){
+            list[i].onclick = function(){
+            	alert(i);
+            }
+        })(i)
+    }
+  </script>
+</body>
