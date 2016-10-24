@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta charset="UTF-8">
+        <title>轮播图</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+        <h1>轮播图</h1>
+            <div class="imgRotation">
+                
+                <div class="img-list">
+                    <img src="images/1.jpg" alt="">
+                    <img src="images/2.jpg" alt="">
+                    <img src="images/3.jpg" alt="">
+                    <img src="images/4.jpg" alt="">
+                    <img src="images/5.jpg" alt="">
+                </div>
+                <div class="circle">
+                    <a href="javascript:;" class="active"></a>
+                    <a href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                    <a href="javascript:;"></a>
+                </div>
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+        <script>
+            var imgListEle = $('.img-list');
+            var timer;
+            var timerInner;
+            var intervalTime = 2000;
+            var activID = 1;
+            var nextID = 2;
+            var listEle = $('.circle').getElementsByTagName('a');
+
+            console.log(listEle[0]);
+            var imageWidth = $('img').offsetWidth;
+            console.log(imageWidth);
+
+            for (var i = 0; i < listEle.length; i++) {
+                listEle[i].index = i + 1;
+            }
+
+            function rotate(clickID){
+                if (clickID) {
+                    nextID = clickID;
+                } else {
+                    nextID = activID > 4 ? 1 : activID + 1;
+                }
+                removeClass(listEle[activID-1], 'active');
+                addClass(listEle[nextID-1], 'active');
+                var target = (nextID-1)*(-imageWidth);
+                moveTo(target);
+                activID = nextID;
+            }
+
+            function moveTo(target){
+                var speed = target - imgListEle.offsetLeft;
+                speed = speed/6;
+                clearInterval(timerInner);
+                timerInner = setInterval(function(){
+                    speed = (target - imgListEle.offsetLeft)/6;
+                    speed = Math.round(speed);
+                    imgListEle.style.left = speed + imgListEle.offsetLeft + "px";
+                }, 30);
+            }
+            
+            timer = setInterval(rotate, intervalTime);
+
+            $.delegate('.circle', 'a', 'click', function(e){
+                clearInterval(timer);
+                var index = this.index;
+                rotate(index);
+                timer = setInterval(rotate, intervalTime);
+            })
+        </script>
+    </body>
+</html>

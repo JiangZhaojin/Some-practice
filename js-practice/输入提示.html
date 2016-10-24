@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta charset="UTF-8">
+        <title>输入提示框</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <!-- 实现一个类似百度搜索框的输入提示的功能。
+        
+        要求如下：
+        
+        允许使用鼠标点击选中提示栏中的某个选项
+        允许使用键盘上下键来选中提示栏中的某个选项，回车确认选中
+        选中后，提示内容变更到输入框中 -->
+        
+        <div class="container input-hint">
+            <h1>输入框提示</h1>
+            <p>输入a试试~</p>
+            <input type="text">
+            <ul>
+            </ul>
+        </div>
+        <script src="js/main.js"></script>
+        <script>
+            var data = ['a', 'abc', 'angry', 'addEvent', 'ajax', 'ahesd', 'abort'];
+            var ulEle = document.getElementsByTagName('ul')[0];
+            var inputElement = document.getElementsByTagName('input')[0];
+            function onInput(element, listener){
+                if (element.addEventListener) {
+                    element.addEventListener('input', listener);
+                } else {
+                    element.attachEvent('onpropertychange', listener);
+                }
+            }
+            function handle(event){
+                event = event || window.event;
+                var inputEle = event.target || event.srcElement;
+                var value = inputEle.value;
+                console.log(value);
+                if (!value) { 
+                    ulEle.style.display = 'none';
+                    return;
+                }
+                var pattern = new RegExp('^'+value,'i');
+                var lisStr = "";
+                for (var i = 0; i < data.length; i++) {
+                    if(pattern.test(data[i])) {
+                        lisStr += '<li><span>'+value+'</span>'+data[i].slice(value.length)+'</li>';
+                        console.log(lisStr);
+                    }
+                }
+                if (lisStr != '') {
+                    ulEle.innerHTML = lisStr;
+                    ulEle.style.display = 'block';
+                }
+            }
+
+            function clickEvent(){
+                ulEle.addEventListener('click', function(event){
+                    var target = event.target;
+                    inputElement.value = target.textContent || target.innerText; //deletSpan(target.innerHTML);
+                    ulEle.style.display = 'none';
+                })
+            }
+
+            function onHover(){
+                ulEle.onmouseover = function(e){
+                    e = e || window.e;
+                    var target = e.target || e.srcElement;
+                    target.className = 'active';
+                }
+                ulEle.onmouseout = function(e){
+                    e = e || window.e;
+                    var target = e.target || e.srcElement;
+                    target.className = '';
+                }
+            }
+
+            function onKeyDown(){
+                inputElement.addEventListener('keydown', function(event){
+                    var activEle = $('.active');
+                    var keyCode = event.keyCode;
+                    console.log(ulEle);
+                    if (keyCode === 40||38||13) {
+                         if (activEle) {
+                             if (keyCode === 40) {
+                                 if (activEle.nextSibling) {
+                                     activEle.className = '';
+                                     activEle.nextSibling.className = 'active';
+                                     ulEle.style.display = 'block';
+                                 }
+                             } else if (keyCode == 38) {
+                                 if (activEle.previousSibling) {
+                                     activEle.className = '';
+                                     activEle.previousSibling.className = 'active';
+                                     ulEle.style.display = 'block';
+                                 }
+                             } else if (keyCode == 13) {
+                                 inputElement.value = activEle.innerText || activEle.textContent;
+                                 ulEle.style.display = 'none';
+                             }
+                         } else if (ulEle.firstChild) {
+                             ulEle.firstChild.className = 'active';
+                             ulEle.style.display = 'block';
+                         } else {
+                             ulEle.style.display = 'none';
+                         }
+                    }
+                });
+            }
+
+            onInput(inputElement, handle);
+            clickEvent();
+            onHover();
+            onKeyDown();
+
+        </script>
+    </body>
+</html>

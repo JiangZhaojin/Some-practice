@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽交互</title>
+    <script>
+        window.onload = function(){
+        	var box = document.getElementById("box");
+            box.onmousedown = function(e){
+            	e = e || window.event;
+            	var disX = e.clientX - this.offsetLeft;
+            	var disY = e.clientY - this.offsetTop;
+            	document.onmousemove = function(e){
+            		e = e || window.event;
+            		box.style.left = e.clientX - disX + "px";
+            		box.style.top = e.clientY - disY + "px";
+            	}
+            	document.onmouseup = function(e){
+            		document.onmousemove = null;
+            		document.onmouseup = null;
+            	}
+            }
+        }
+    </script>
+    <style>
+        #box {
+        	width: 100px;
+        	height: 100px;
+        	background-color: #555;
+        	position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+    <head>
+        <meta charset="UTF-8">
+        <title>界面拖拽交互</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>界面拖拽交互</h1>
+            <div class="drag-block clearfix">
+                <div class="block left-block">
+                    <div class="move"></div>
+                    <div class="move"></div>
+                    <div class="move"></div>
+                    <div class="move"></div>
+                </div>
+                <div class="block right-block">
+                    <div class="move"></div>
+                    <div class="move"></div>
+                    <div class="move"></div>
+                    <div class="move"></div>
+                </div>
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+        <script>
+             var leftBlock = document.getElementsByClassName('left-block')[0];
+             var rightBlock = document.getElementsByClassName('right-block')[0];
+
+             function flashBlock(parent){
+                 var childNodes = parent.children;
+                 for (var i = 0; i < childNodes.length; i++) {
+                     childNodes[i].style.top = 60*i+1+'px';
+                 }
+             }
+
+             function drag(event){
+                 event = event || window.event;
+                 var target = event.target || event.srcElement;
+                 if (target.className.toLowerCase() != 'move') {
+                    return;
+                 }
+
+                 var disX = event.clientX;
+                 var disY = event.clientY;
+                 
+
+             }
+
+             delegateEvent(leftBlock, 'div', 'event', 'mousedown', drag);
+             delegateEvent(rightBlock, 'div', 'event', 'mousedown',drag);
+
+             flashBlock(leftBlock);
+             flashBlock(rightBlock);
+        </script>
+    </body>
+</html>
