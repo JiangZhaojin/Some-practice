@@ -1,0 +1,46 @@
+<?php if (!defined('THINK_PATH')) exit();?>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="">
+  <meta name="description" content="NBA-News内容管理平台">
+  <meta name="author" content="jiangzhajin">
+  <link rel="icon" href="favicon">
+
+  <title>NBA-News内容管理平台</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/Public/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="signin.css" rel="stylesheet">
+</head>
+
+<body>
+<style>
+  .s_center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+<div class="s_center container col-lg-6 ">
+
+    <form class="form-signin" enctype="multipart/form-data"  method="post">
+      <h2 class="form-signin-heading">请登录</h2>
+      <label class="sr-only">用户名</label>
+      <input type="text"  class="form-control" name="username" placeholder="请填写用户名" required autofocus>
+      <br />
+      <label  class="sr-only">密码</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="密码" required>
+      <br />
+      <button class="btn btn-lg btn-primary btn-block" type="button" onclick="login.check()">登录</button>
+    </form>
+
+</div>
+<script src="/Public/js/jquery.js"></script>
+<script src="/Public/js/dialog/layer.js"></script>
+<script src="/Public/js/dialog.js"></script>
+<script src="/Public/js/admin/login.js"></script>
+</body>
+</html>

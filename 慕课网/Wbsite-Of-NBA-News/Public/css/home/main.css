@@ -1,0 +1,287 @@
+body {
+	font-family: "微软雅黑";
+	font-size: 1.4rem;
+	margin-bottom: 20px;
+}
+
+/**********导航栏************/
+.navbar-header-img {
+	display: block;
+	margin: auto 0;
+	height: 100% !important;
+	padding: 10px;
+}
+.navbar-inverse {
+	background: #262626;
+}
+.navbar-inverse .navbar-nav {
+	padding-left: 45px;
+}
+.navbar-inverse .navbar-nav > li > a {
+	font-size: 1.8rem;
+	color: #fff;
+	line-height: 2;
+}
+.navbar-inverse .navbar-nav > li > a.curr {
+	border-bottom: 2px solid #e54e47;
+	padding-bottom: 13px;
+}
+.navbar-brand img {
+	height: 100%;
+	width: auto;
+	margin-left: 10px;
+}
+
+/*********主页*************/
+#main img {
+	outline: 2px solid transparent;
+}
+#main img:hover {
+	outline: 2px solid #E94D3D;
+}
+
+.carousel {
+	width: 100%;
+	height: 32rem;
+	overflow: hidden;
+}
+
+#smallNews {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	list-style: none;
+}
+#smallNews li {
+	margin-bottom: 10px;
+}
+
+.banner-info {
+	position: absolute;
+	left: 5rem;
+	top: 3.8rem;
+	width: 18rem;
+	height: 5rem;
+	line-height: 2;
+
+	background: rgba(0,0,0,0.3);
+	font-size: 32px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+}
+
+.banner-info span {
+	float: left;
+	width: 5rem;
+	height: 5rem;
+
+	background: #e94d3d;
+	font-size: 12px;
+	font-weight: normal;
+	text-align: center;
+}
+
+.news-list dl {
+	position: relative;
+	padding: 3rem 0;
+	overflow: hidden;
+	border-bottom: 1px solid #f1f1f1;
+}
+
+.news-list dd.news-img {
+	position: absolute;
+	left: 0;
+	top: 3.8rem;
+	margin: 0;
+	margin-left: 2px;
+}
+
+.news-list dt,.news-list dd {
+	margin-left: 22rem;
+}
+
+.news-list dt {
+	font-size: 2rem;
+	line-height: 1.8;
+}
+
+.news-intro {
+	color: #646464;
+	padding-bottom: 2rem;
+	min-height: 4rem;
+}
+
+.news-info {
+	font-size: 12px;
+}
+
+.news-info span {
+	display:inline-block;
+	padding: 0 15px 0 35px;
+}
+
+/*******右侧排行榜***********/
+.right-title {
+	padding: 5px 0;
+	text-align: center;
+	border-bottom: 1px solid #cdcdcd;
+}
+
+.right-title h3 {
+	margin:0;
+	margin-top: 5px;
+	line-height: 100%;
+	font-weight: normal;
+}
+
+.right-title span {
+	font-size: 12px;
+	color: #9a9792
+}
+
+.right-tab {
+	list-style: none;
+	line-height: 45px;
+}
+
+.right-tab ul {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border-bottom: 1px solid #f3f3f3;
+}
+
+.right-tab li {
+	text-align: center;
+	list-style: none;
+	float: left;
+	width: 50%;
+	cursor: pointer;
+}
+
+.right-tab li.curr {
+	border-bottom: 2px solid #e44d46;
+}
+
+.right-content ul {
+	padding: 0;
+}
+
+.right-content li {
+	padding:14px 10px 14px 50px;
+	list-style: none;
+	background-position: 20px 12px;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #f3f3f3;
+	font-size: 12px;
+}
+
+.right-content li:last-child {
+	border: 0;
+}
+
+.right-content li .intro {
+	display: none;
+	padding-top: 5px;
+	color: #a2a2a0;
+}
+
+.right-content li.num1{
+	background-image: url(../../images/num1.png);
+}
+.right-content li.num2{
+	background-image: url(../../images/num2.png);
+}
+.right-content li.num3{
+	background-image: url(../../images/num3.png);
+}
+.right-content li.num4{
+	background-image: url(../../images/num4.png);
+}
+.right-content li.num5{
+	background-image: url(../../images/num5.png);
+}
+.right-content li.num6{
+	background-image: url(../../images/num6.png);
+}
+.right-content li.num7{
+	background-image: url(../../images/num7.png);
+}
+.right-content li.num8{
+	background-image: url(../../images/num8.png);
+}
+.right-content li.num9{
+	background-image: url(../../images/num9.png);
+}
+.right-content li.num10{
+	background-image: url(../../images/num10.png);
+}
+
+.right-content a {
+	margin: 0;
+	font-size: 14px;
+	line-height: 100%;
+	color: #000;
+}
+
+.right-content li.curr a {
+	font-size: 1.6rem;
+}
+
+.right-content li.curr .intro {
+	display: block;
+}
+
+.right-hot {
+	margin-top: 9rem;
+	text-align: center;
+}
+
+.right-hot img {
+	max-width: 80%;
+	width: 80%;
+}
+
+@media only screen and (max-width: 1200px) {
+	.banner-right{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.navbar-inverse .navbar-nav {
+		padding-left: 0;
+	}
+	.news-list dl {
+		padding: 10px 0;
+	}
+	.news-list dt, .news-list dd {
+		margin-left: 0;
+		padding: 5px 0;
+	}
+	.news-list dd.news-img {
+		position: relative;
+		top: 0;
+	}
+
+}
+
+.sing_display_none {
+	display: none;
+}
+
+.sing_display_block {
+	display: block;
+}
+
+/*********文章详情页**********/
+.news-detail {
+	overflow:hidden
+}
+
+.news-detail h1 {
+	margin-bottom: 3rem;
+}

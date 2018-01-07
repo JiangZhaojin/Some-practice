@@ -1,0 +1,30 @@
+<include file="Index/header" />
+<?php $vo = $result['news'];?>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 col-md-9">
+
+					<div class="news-detail">
+						<h1>{$vo.title}</h1>
+
+						{$vo.content}
+					</div>
+					
+				</div>
+
+                <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
+				    <include file="Index/right" />
+				</div>
+				<!-- end right-->
+			</div>
+		</div>
+	</section>
+	<include file="Index/footer" />
+</body>
+<script src="/Public/js/jquery.js"></script>
+<script src="/Public/js/bootstrap.min.js"></script>
+<script>
+	
+</script>
+</html>
