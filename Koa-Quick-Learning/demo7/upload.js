@@ -2,7 +2,7 @@
  * @Author: Jiang Zhaojin 
  * @Date: 2018-05-14 20:09:30 
  * @Last Modified by: Jiang Zhaojin
- * @Last Modified time: 2018-05-14 21:23:47
+ * @Last Modified time: 2018-05-15 10:25:35
  */
 
 const path = require('path')
@@ -37,9 +37,9 @@ module.exports.uploadFile = function (ctx, option) {
 
   return new Promise((resolve, reject) => {
     console.log('文件上传中···')
-   busboy.on('file', (fieldname, file, filename, encoding, mimeType) => {
-      file.pipe(path.join(option.path, filename))
-     busboy.on('end', () => {
+    busboy.on('file', (fieldname, file, filename, encoding, mimeType) => {
+      file.pipe(fs.createWriteStream(path.join(option.path, filename)))
+      busboy.on('end', () => {
         result.success = true
         result.message = '文件上传完成！'
         console.log('文件上传完成！')
@@ -54,7 +54,9 @@ module.exports.uploadFile = function (ctx, option) {
     
     // 监听结束事件
     busboy.on('finish', function() {
-      console.log('文件上传结束！')
+      result.success = true
+      result.message = '文件上传完成！'
+      console.log('文件上传完成！')
       resolve(result)
     })
 

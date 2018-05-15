@@ -12,7 +12,12 @@
   "author": "jiangzhaojin",
   "license": "MIT",
   "dependencies": {
+    "chai": "^4.1.2",
     "koa": "^2.5.1",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "supertest": "^3.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1"
   }
 }
