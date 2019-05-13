@@ -1,0 +1,2 @@
+(window.webpackJsonpwebpackPrint=window.webpackJsonpwebpackPrint||[]).push([[1],{2:function(n,o,c){"use strict";c.r(o),o.default=function(){console.log("hello 懒加载")}}}]);
+//# sourceMappingURL=print.bundle.js.map

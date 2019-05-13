@@ -1,0 +1,10 @@
+body {
+    color: blue;
+}
+
+.content {
+    width: 200px;
+    height: 200px;
+    background: url(./icno.jpeg) no-repeat;
+    background-size: contain;
+}

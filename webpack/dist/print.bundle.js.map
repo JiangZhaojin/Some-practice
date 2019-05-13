@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://webpackPrint/./src/print.js"],"names":["__webpack_require__","r","__webpack_exports__","console","log"],"mappings":"gHAAAA,EAAAC,EAAAC,GAAeA,EAAA,mBACfC,QAAAC,IAAA","file":"print.bundle.js","sourcesContent":["export default function () {\n    console.log('hello 懒加载');\n}"],"sourceRoot":""}
