@@ -12,3 +12,15 @@ Singleton.getInstance = (function() {
 })();
 
 Singleton.getInstance() === Singleton.getInstance();
+
+
+
+// ES6实现单例模式
+function proxy(func) {
+    let instance;
+    return new Proxy(func, {
+        construct(target, args) {
+            return instance || (instance = Reflect.construct(func, args));
+        }
+    });
+}
