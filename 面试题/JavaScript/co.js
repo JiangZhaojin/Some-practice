@@ -18,3 +18,4 @@ function run(generatorFn) {
         }   
         next(result);   
     })
+}
