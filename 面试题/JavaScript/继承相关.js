@@ -22,3 +22,18 @@ function inherit (subType, superType) {
     });
     Object.setPrototypeOf(subType, superType);
 }
+
+// ES5: 寄生组合式继承
+function Person(name) {
+    this.name = name;
+}
+Person.prototype.sayName = function() {
+    console.log(this.name);
+}
+
+function Man(name) {
+    Person.call(this, name);
+}
+
+Man.prototype = Object.create(Person);
+Man.prototype.constructor = Man;

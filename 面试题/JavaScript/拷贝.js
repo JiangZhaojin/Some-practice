@@ -14,3 +14,28 @@ Object.myAssign = function(target, ...source) {
         return acc;
     }, target);
 }
+
+// 实现一个浅拷贝
+function shallowClone(target) {
+    if(!target || typeof target !== 'object') {
+        return target;
+    }
+    let clone = target.constructor === Array ? [] : {};
+    // Object返回自身可枚举属性--不含Symbol
+    // for in + hasOwnProperty 返回自身可枚举属性---包含Symbol
+    for(let key in target) {
+        if(target.hasOwnProperty(key)) {
+            clone[key] = target[key];
+        }
+    }
+    return clone;
+}
+
+// 实现一个深度拷贝
+// 不会复制Symbol键值
+function deepClone(target) {
+    if(!target || typeof target !== 'object') {
+        return target;
+    }
+    return JSON.parse(JSON.stringify(target));
+}
