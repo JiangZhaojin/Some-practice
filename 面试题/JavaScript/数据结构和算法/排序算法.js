@@ -120,3 +120,13 @@ function quikSort(array) {
 }
 
 quikSort([6, 3, 0, 4, 2, 1, 7]);
+
+// 希尔排序
+function shellSort () {
+
+}
+
+// 归并排序
+function mergeSort() {
+    
+}
