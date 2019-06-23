@@ -1,9 +1,9 @@
 // 组织一种含有等级关系的数据
 class Node {
-    constructor(data, left, right) {
+    constructor(data) {
         this.data = data;
-        this.left = left;
-        this.right = right;
+        this.left = null;
+        this.right = null;
     }
     show() {
         return this.data;
@@ -17,7 +17,7 @@ class Tree {
     insert(data) {
         let node = new Node(data);
         let current = this.root;
-        if(root === null) {
+        if(current === null) {
             this.root = node;
             return;
         }

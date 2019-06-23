@@ -14,3 +14,32 @@ function debounce (fn, delay) {
 document.body.addEventListener('mousemove', debounce(function() {
     console.log('trigger');
 }, 1000))
+
+
+// 加强版
+function debounce(fn, delay = 50, immediate = true) {
+    let context, args, timer;
+
+    let later = () => setTimeout(() => {
+        timer = null;
+        if(!immediate) {
+            fn.apply(context, args);
+            context = args = null;
+        }
+    }, delay);
+
+    return function(...params) {
+        if (timer) {
+            clearTimeout(timer);
+            timer = later;
+        } else {
+            timer = later;
+            if(immediate) {
+                fn.apply(this, params);
+            } else {
+                context = this;
+                args = params;
+            }
+        }
+    }
+}

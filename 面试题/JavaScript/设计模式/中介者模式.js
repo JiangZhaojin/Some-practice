@@ -49,6 +49,7 @@ const player = function(name) {
   a.win()
   b.win()
   c.lose()
+  playerMiddle.show();
   
   // A 选手挑战成功;
   // B 选手挑战成功;

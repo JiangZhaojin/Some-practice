@@ -47,7 +47,7 @@ Array.prototype.mySome = function (fn, context) {
 // 实现reduce方法
 Array.prototype.myReduce = function (fn, initValue) {
     let res;
-    let startIndex;
+    let startIndex = -1;
     if (initValue === undefined) {
         for (let i = 0; i < this.length; i ++) {
             if (!this.hasOwnProperty(i)) continue;

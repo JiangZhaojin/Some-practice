@@ -8,7 +8,7 @@ class Node {
     }
 }
 
-class LList {
+class DList {
     constructor() {
         this.head = new Node('head');
     }

@@ -1,21 +1,18 @@
 let lazyLoad = (function() {
     let imgList = [...document.querySelectorAll('img')];
-    let totalImg = imgList.length;
-    let count = 0;
-    let deleteList = [];
     return function() {
+        let deleteList = [];
         imgList.forEach((img, index) => {
             let rect = img.getBoundingClientRect();
             if(rect.top < window.innerHeight) {
                 img.src = img.dataset.src;
-                count ++;
                 deleteList.push(index);
             }
         });
-        if(count === totalImg) {
+        imgList = imgList.filter((img, index) => !deleteList.includes(index));
+        if(!imgList.length) {
             document.removeEventListener('scroll', lazyLoad);
         }
-        imgList = imgList.filter((img, index) => !deleteList.includes(index))
     }
 }());
 

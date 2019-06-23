@@ -8,14 +8,16 @@ const selfNew = function(fn, ...args) {
     return instance;
 }
 
+
 // instance实现
 function instance (left, right) {
+    let prototype = right.prototype;
     left = Object.getPrototypeOf(left);
     while(true) {
-        if (left === null) {
+        if (left === null || prototype === null) {
             return false;
         }
-        if(left === right.prototype) {
+        if(left === prototype) {
             return true;
         }
         left = Object.getPrototypeOf(left);

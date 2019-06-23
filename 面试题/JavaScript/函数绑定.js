@@ -15,6 +15,9 @@ Function.prototype.myBind = function (context) {
 }
 
 Function.prototype.myCall = function (context, ...args) {
+    if(typeof this !== 'function') {
+      throw new TypeError('error');
+    }
     let caller = Symbol('caller');
     context = context || window;
     context[caller] = this;
@@ -24,6 +27,9 @@ Function.prototype.myCall = function (context, ...args) {
 }
 
 Function.prototype.myApply = function (context, args = []) {
+  if(typeof this !== 'function') {
+    throw new TypeError('error');
+  }
     let apply = Symbol('apply');
     context = context || window;
     context[apply] = this;

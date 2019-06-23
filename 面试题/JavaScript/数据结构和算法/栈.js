@@ -1,22 +1,21 @@
-// 一种特殊列表：只能头尾操作、先进后出
-
-function Stack() {
-    this.top = 0;
-    this.dataStore = [];
-    this.push = function(element) {
-        this.dataStore[this.top ++] = element;
+class Stack {
+    constructor() {
+      this.stack = []
     }
-    this.pop = function() {
-        return this.dataStore[--this.top];
+    push(item) {
+      this.stack.push(item)
     }
-    this.peek = function() {
-        return this.dataStore[this.top - 1];
+    pop() {
+      this.stack.pop()
     }
-    this.clear = function() {
-        this.dataStore = [];
-        this.top = 0;
+    peek() {
+      return this.stack[this.getCount() - 1]
     }
-    this.length = function() {
-        return this.top;
+    getCount() {
+      return this.stack.length
     }
-}
+    isEmpty() {
+      return this.getCount() === 0
+    }
+  }
+  

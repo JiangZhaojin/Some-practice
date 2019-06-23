@@ -17,4 +17,17 @@ class EventEmitter {
             }
         }
     }
+    onece(event, handler) {
+        this.on(event, function() {
+            handler.apply(this, arguments);
+            this.off(event, handler);
+        });
+    }
+    trigger(event, ...params) {
+        if(this.store[event]) {
+            this.store[event].forEach(fn => {
+                fn(...params);
+            });
+        }
+    }
 }

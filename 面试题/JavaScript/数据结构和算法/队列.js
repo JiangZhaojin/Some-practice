@@ -1,23 +1,22 @@
-// 一种特殊列表：后进后出
+class Queue {
+    constructor() {
+      this.queue = []
+    }
+    enQueue(item) {
+      this.queue.push(item)
+    }
+    deQueue() {
+      return this.queue.shift()
+    }
+    getHeader() {
+      return this.queue[0]
+    }
+    getLength() {
+      return this.queue.length
+    }
+    isEmpty() {
+      return this.getLength() === 0
+    }
+  }
 
-function Queue() {
-    this.dataStore = [];
-    this.enqueue = function(element) {
-        this.dataStore.push(element);
-    }
-    this.dequeue = function() {
-        return this.dataStore.shift();
-    }
-    this.front = function() {
-        return this.dataStore[0];
-    }
-    this.back = function() {
-        return this.dataStore[this.dataStore.length - 1];
-    }
-    this.empty = function() {
-        return this.dataStore.length === 0;
-    }
-    this.toString = function() {
-        return this.dataStore;
-    }
-}
+  

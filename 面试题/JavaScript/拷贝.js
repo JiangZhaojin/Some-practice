@@ -20,6 +20,7 @@ function shallowClone(target) {
     if(!target || typeof target !== 'object') {
         return target;
     }
+    // Array.isArray()好像更好；
     let clone = target.constructor === Array ? [] : {};
     // Object返回自身可枚举属性--不含Symbol
     // for in + hasOwnProperty 返回自身可枚举属性---包含Symbol
@@ -38,4 +39,17 @@ function deepClone(target) {
         return target;
     }
     return JSON.parse(JSON.stringify(target));
+}
+
+// ES6深拷贝
+function deepClone(target) {
+    if(!isComplexType(target)) {
+        return target;
+    }
+    let clone = Array.isArray(target) ? [] : {};
+    Reflect.ownKeys(target).forEach(key => {
+        let value = target[key];
+        clone[key] = isComplexType(value) ? deepClone(value) : value;
+    });
+    return clone;
 }
