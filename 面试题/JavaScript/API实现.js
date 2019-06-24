@@ -10,7 +10,7 @@ const selfNew = function(fn, ...args) {
 
 
 // instance实现
-function instance (left, right) {
+function instanceOf (left, right) {
     let prototype = right.prototype;
     left = Object.getPrototypeOf(left);
     while(true) {
